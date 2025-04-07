@@ -111,7 +111,7 @@ export default function PositivusLanding() {
         </div>
         <div className="w-full md:w-1/2 mb-12 md:mb-0">
           <img
-            src="./src/assets/illustration.png"
+            src="./assets/illustration.png"
             alt="Megaphone graphic"
             className="w-full"
           />
@@ -133,7 +133,7 @@ export default function PositivusLanding() {
           {[...Array(6)].map((_, index) => (
             <img
               key={index}
-              src="./src/assets/logos.png"
+              src="./assets/logos.png"
               alt="Client logos"
               className="h-5 md:h-9 grayscale"
             />
@@ -176,7 +176,7 @@ export default function PositivusLanding() {
               </div>
               <div className="flex justify-end items-end">
                 <img
-                  src="./src/assets/tokyo-magnifier.png"
+                  src="./assets/tokyo-magnifier.png"
                   alt="SEO"
                   className="max-h-32 w-full md:w-auto object-contain grayscale"
                 />
