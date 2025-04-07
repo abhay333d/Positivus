@@ -53,45 +53,49 @@ export default function TestimonialSlider() {
     <div className="w-full max-w-6xl mx-auto px-4 py-12 flex flex-col items-center gap-6 bg-[#191A23] rounded-3xl">
       {/* Testimonial Bubble */}
       <div
-        className={`relative bg-[#191A23] border border-lime-400 px-8 py-6 rounded-4xl text-white max-w-xl transition-opacity duration-300 ${
+        className={`relative bg-[#191A23] border border-lime-400 px-6 md:px-8 py-6 rounded-3xl text-white transition-opacity duration-300 max-w-xl w-full ${
           fade ? "opacity-100" : "opacity-0"
         }`}
       >
         {/* Tail */}
-        <div className="absolute left-16 -bottom-[16.5px] w-8 h-8 bg-[#191A23] border-l border-b border-lime-400 -rotate-45"></div>
+        <div className="hidden sm:block absolute left-16 -bottom-[16.5px] w-8 h-8 bg-[#191A23] border-l border-b border-lime-400 -rotate-45"></div>
 
         {/* Quote */}
-        <p className="text-base italic mb-4 text-white">
+        <p className="text-sm sm:text-base italic mb-4 text-white">
           “{testimonials[current].text}”
         </p>
       </div>
 
       {/* Author */}
-      <div className="relative w-full">
-        <div className="absolute left-88 top-2 transition-opacity duration-300">
-          <p className="text-lime-400 font-semibold">
-            {testimonials[current].name}
-          </p>
-          <p className="text-sm text-white/70">{testimonials[current].title}</p>
-        </div>
+      <div className="text-center">
+        <p className="text-lime-400 font-semibold text-base sm:text-lg">
+          {testimonials[current].name}
+        </p>
+        <p className="text-sm text-white/70">{testimonials[current].title}</p>
       </div>
 
       {/* Controls */}
-      <div className="flex items-center gap-6 mt-25">
-        <button onClick={prevSlide} className="text-white">
+      <div className="flex items-center gap-6 mt-6 sm:mt-10">
+        <button
+          onClick={prevSlide}
+          className="text-white hover:text-lime-400 transition"
+        >
           <ArrowLeft size={20} />
         </button>
         <div className="flex items-center gap-2">
           {testimonials.map((_, i) => (
             <div
               key={i}
-              className={`w-3 h-3 rounded-full ${
+              className={`w-2.5 h-2.5 rounded-full transition-all ${
                 current === i ? "bg-lime-400" : "bg-white/30"
               }`}
             />
           ))}
         </div>
-        <button onClick={nextSlide} className="text-white">
+        <button
+          onClick={nextSlide}
+          className="text-white hover:text-lime-400 transition"
+        >
           <ArrowRight size={20} />
         </button>
       </div>

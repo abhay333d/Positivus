@@ -5,6 +5,7 @@ import { Input } from "./components/ui/input";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaBars } from "react-icons/fa";
 import TestimonialSlider from "./components/ui/TestimonialSlider";
+import Footer from "./components/ui/Footer";
 
 const LogoIcon = () => (
   <svg
@@ -287,6 +288,7 @@ export default function PositivusLanding() {
         </div>
       </section>
       <TestimonialSlider />
+      <Footer/>
     </div>
   );
 }
