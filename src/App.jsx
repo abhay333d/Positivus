@@ -4,6 +4,7 @@ import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaBars } from "react-icons/fa";
+import TestimonialSlider from "./components/ui/TestimonialSlider";
 
 const LogoIcon = () => (
   <svg
@@ -273,7 +274,19 @@ export default function PositivusLanding() {
             </div>
           ))}
         </div>
+        <div className="flex flex-col py-8 md:flex-row md:items-center md:justify-between gap-10 w-full md:w-3xl text-center md:text-left">
+          <h3 className="text-2xl font-semibold text-[#B9FF66] mb-4">
+            <span className="bg-[#B9FF66] text-black py-0.5 px-1 rounded-md">
+              Testimonials
+            </span>
+          </h3>
+          <p className="mb-6 text-sm">
+            Hear from Our Satisfied Clients: Read Our Testimonials to Learn More
+            about Our Digital Marketing Services
+          </p>
+        </div>
       </section>
+      <TestimonialSlider />
     </div>
   );
 }
