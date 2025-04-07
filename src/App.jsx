@@ -225,7 +225,7 @@ export default function PositivusLanding() {
       </section>
 
       {/* FAQs Section */}
-      <section className="px-4 py-8 max-w-6xl mx-auto">
+      <section className="px-4 pt-0 pb-8 max-w-6xl mx-auto">
         <div className="space-y-4">
           {[
             {
