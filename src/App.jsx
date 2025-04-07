@@ -29,9 +29,10 @@ const LogoIcon = () => (
 
 export default function PositivusLanding() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <div className="bg-white text-black font-sans min-h-screen">
+    <div className="bg-white text-black font-sans min-h-screen overflow-x-hidden">
       {/* Header */}
       <header className="flex justify-between items-center p-10 md:px-32">
         <div className="flex items-center gap-2">
@@ -141,30 +142,31 @@ export default function PositivusLanding() {
       </div>
 
       {/* Services */}
-      <section className="px-4 py-16 max-w-3xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-10 w-xl">
-          <h3 className="text-2xl font-semibold text-[#B9FF66] mb-4">
+      <section className="px-4 py-16 max-w-6xl mx-auto">
+        <div className="flex flex-col items-center md:flex-row md:items-center md:justify-between gap-6 mb-10">
+          <h3 className="text-2xl font-semibold text-[#B9FF66] text-center">
             <span className="bg-[#B9FF66] text-black py-0.5 px-1 rounded-md">
               Services
             </span>
           </h3>
-          <p className="mb-6 text-sm">
-            At our digital marketing agency, we offer a range of services to help
-            businesses grow and succeed online. These services include:
+          <p className="text-sm md:text-base max-w-2xl">
+            At our digital marketing agency, we offer a range of services to
+            help businesses grow and succeed online. These services include:
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8 h-60">
-          <Card className="border border-black rounded-4xl bg-white shadow-md">
-            <CardContent className="p-6 flex h-full">
-              <div className="flex-1 flex flex-col justify-between">
-                <h4 className="font-semibold text-xl mb-4 mt-3 ml-4 inline-block">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="border border-black rounded-2xl bg-white shadow-md">
+            <CardContent className="p-4 flex flex-col md:flex-row justify-between h-full">
+              <div className="flex-1 flex flex-col justify-between mb-4 md:mb-0">
+                <h4 className="font-bold text-xl mb-4">
                   <span className="bg-[#B9FF66] px-1">
                     Search engine optimization
                   </span>
                 </h4>
                 <Button
                   variant="ghost"
-                  className="text-black flex items-center mt-auto mr-8"
+                  className="text-black flex items-center"
                 >
                   <span className="bg-black text-white p-2 rounded-full mr-2">
                     <FaArrowRight />
@@ -172,26 +174,27 @@ export default function PositivusLanding() {
                   Learn more
                 </Button>
               </div>
-              <div className="flex-1 flex justify-end items-end mb-8">
+              <div className="flex justify-end items-end">
                 <img
                   src="./src/assets/tokyo-magnifier.png"
                   alt="SEO"
-                  className="max-h-35 object-contain"
+                  className="max-h-32 w-full md:w-auto object-contain grayscale"
                 />
               </div>
             </CardContent>
           </Card>
-          <Card className="border border-black rounded-4xl bg-[#B9FF66] shadow-md">
-            <CardContent className="p-6 flex h-full">
-              <div className="flex-1 flex flex-col justify-between">
-                <h4 className="font-semibold text-xl mb-4 mt-3 ml-4 inline-block">
+
+          <Card className="rounded-2xl bg-[#B9FF66] text-black shadow-md">
+            <CardContent className="p-4 flex flex-col md:flex-row justify-between h-full">
+              <div className="flex-1 flex flex-col justify-between mb-4 md:mb-0">
+                <h4 className="font-bold text-xl mb-4">
                   <span className="bg-white px-1">
-                    Search engine optimization
+                    Pay-per-click advertising
                   </span>
                 </h4>
                 <Button
                   variant="ghost"
-                  className="text-black flex items-center mt-auto mr-8"
+                  className="text-black flex items-center"
                 >
                   <span className="bg-black text-white p-2 rounded-full mr-2">
                     <FaArrowRight />
@@ -199,15 +202,76 @@ export default function PositivusLanding() {
                   Learn more
                 </Button>
               </div>
-              <div className="flex-1 flex justify-end items-end mb-8">
+              <div className="flex justify-end items-end">
                 <img
                   src="./src/assets/tokyo-selecting.png"
-                  alt="SEO"
-                  className="max-h-35 object-contain"
+                  alt="PPC"
+                  className="max-h-32 w-full md:w-auto object-contain grayscale"
                 />
               </div>
             </CardContent>
           </Card>
+          <div className="flex flex-col py-8 md:flex-row md:items-center md:justify-between gap-10 w-full text-center md:text-left">
+            <h3 className="text-2xl font-semibold text-[#B9FF66] mb-4">
+              <span className="bg-[#B9FF66] text-black py-0.5 px-1 rounded-md">
+                Our Working Process
+              </span>
+            </h3>
+            <p className="mb-6 text-sm">
+              Step-by-Step Guide to Achieving Your Business Goals
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs Section */}
+      <section className="px-4 py-8 max-w-6xl mx-auto">
+        <div className="space-y-4">
+          {[
+            {
+              id: 1,
+              title: "Consultation",
+              content:
+                "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.",
+            },
+            {
+              id: 2,
+              title: "Research and Strategy Development",
+              content:
+                "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.",
+            },
+          ].map((item, index) => (
+            <div
+              key={item.id}
+              className={`rounded-2xl border border-black shadow-md transition-colors duration-300 ${
+                index === activeIndex ? "bg-[#B9FF66]" : "bg-white"
+              }`}
+            >
+              <button
+                onClick={() =>
+                  setActiveIndex(index === activeIndex ? null : index)
+                }
+                className="w-full text-left px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-xl font-bold sm:text-2xl">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-base sm:text-lg font-semibold">
+                    {item.title}
+                  </span>
+                </div>
+                <div className="text-xl sm:text-2xl font-bold">
+                  {index === activeIndex ? "−" : "+"}
+                </div>
+              </button>
+              {index === activeIndex && item.content && (
+                <div className="px-6 py-4 border-t border-black text-sm sm:text-base">
+                  {item.content}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
     </div>
